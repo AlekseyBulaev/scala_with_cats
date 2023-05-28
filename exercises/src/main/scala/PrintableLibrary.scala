@@ -18,4 +18,16 @@ object PrintableLibrary {
     def format[A](value: A)(implicit printable: Printable[A]): String = printable.format(value)
     def print[A](value: A) (implicit printable: Printable[A]): Unit = println(format(value))
   }
+
+  final case class Cat(name: String, age: Int, color: String)
+
+  implicit val printableCat: Printable[Cat] = new Printable[Cat] {
+    import PrintableInstances._
+    override def format(cat: Cat): String =
+      s"${Printable.format(cat.name)} is a ${Printable.format(cat.age)} year-old ${Printable.format(cat.color)} cat."
+  }
+
+  def main(in: Array[String]): Unit = {
+    Printable.print(Cat("Ammu", 10, "red"))
+  }
 }
