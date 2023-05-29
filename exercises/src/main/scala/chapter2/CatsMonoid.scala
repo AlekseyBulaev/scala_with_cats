@@ -1,7 +1,8 @@
+package chapter2
+
 import cats.Monoid
 
 object CatsMonoid {
-import cats.Monoid._
   implicit val booleanAndMonoid: Monoid[Boolean] = new Monoid[Boolean] {
     override def empty: Boolean = true
 

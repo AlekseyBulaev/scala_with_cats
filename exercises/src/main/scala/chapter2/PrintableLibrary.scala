@@ -1,3 +1,5 @@
+package chapter2
+
 
 object PrintableLibrary {
 
@@ -8,8 +10,8 @@ object PrintableLibrary {
   final case class Cat(name: String, age: Int, color: String)
 
   def main(in: Array[String]): Unit = {
+    import PrintableInstances._
     import PrintableSyntax._
-    import  PrintableInstances._
     Cat("Ammu", 10, "red").print
   }
 }

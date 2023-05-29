@@ -1,6 +1,8 @@
+package chapter2
+
 import cats.Show
-import cats.syntax.show._
 import cats.Show._
+import cats.syntax.show._
 object PrintableShow {
   final case class Cat(name: String, age: Int, color: String)
   implicit val catsShow: Show[Cat] = new Show[Cat] {

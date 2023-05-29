@@ -1,3 +1,5 @@
+package chapter2
+
 import cats.Monoid
 import cats.instances.int._
 import cats.syntax.semigroup._
