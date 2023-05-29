@@ -25,4 +25,10 @@ import cats.Monoid._
 
     override def combine(x: Boolean, y: Boolean): Boolean = (!x || y) && (x || !y)
   }
+
+  implicit def setMonoid[A]: Monoid[Set[A]] = new Monoid[Set[A]] {
+    override def empty: Set[A] = Set.empty[A]
+
+    override def combine(x: Set[A], y: Set[A]): Set[A] = x union y
+  }
 }
