@@ -25,4 +25,10 @@ object CatsCalculator {
   def operand(num: Int): CalcState[Int] = State[List[Int], Int] { stack =>
       (num :: stack, num)
     }
+  import cats.syntax.applicative._
+  def evalAll(input: List[String]): CalcState[Int] = input.foldLeft(0.pure[CalcState]) { (a, b) =>
+    a.flatMap(_ => evalOne(b))
+  }
+
+  def evalInput(input: String): Int = evalAll(input.split(" ").toList).runA(Nil).value
 }
